@@ -5,10 +5,10 @@ setup(name='installcon',
       author='Mike Hearne',
       author_email='mhearne@usgs.gov',
       url='https://github.com/mhearne-usgs/installcon',
-      packages=['installcon'],
+      packages=['bin'],
       entry_points={
           'console_scripts': [
-              'installcon = installcon.bin.installcon:main',
+              'installcon = bin.installcon:main',
           ]
       }
       )
