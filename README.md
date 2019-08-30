@@ -8,9 +8,43 @@ the same goal - namely to install command line programs (in our case from conda 
 
 # Installation
 
-Steps:
+First you must have a non-conda related directory in your path that is writeable by your user account.
+
+To test this, do:
+
+`echo $PATH`
+
+and try:
+
+`touch [pathdir]/testfile.txt;rm [pathdir]/testfile.txt`
+
+for each likely-looking [pathdir] in your path. If there are no writeable directories in your path, 
+you can create one by running this command:
+
+`mkdir ~/bin`;
+
+and adding this line to your .bash_profile:
+
+PATH="$HOME/bin:${PATH}"
+
+and running:
+
+`source ~/.bash_profile`
+
+After which you can run the following steps:
+
  - `conda activate base`
- - `pip install git+https://github.com/mhearne-usgs/installcon.git`
+ - `pip install --install-option="--install-scripts=[PATH]" git+https://github.com/mhearne-usgs/installcon.git` (where [PATH] is the directory found or created previously.)
+
+ ## Updating
+
+ To remember where installcon is currently installed:
+
+ `which installcon`
+
+ Then run the "pip install" command as above but this time adding the "--upgrade" option to pip:
+
+ `pip install --upgrade --install-option="--install-scripts=[PATH]" git+https://github.com/mhearne-usgs/installcon.git`
 
  # Usage
 

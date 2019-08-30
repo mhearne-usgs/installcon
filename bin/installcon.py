@@ -74,7 +74,7 @@ def install_package(package, pversion):
     writeable = []
     for pathdir in pathdirs:
         if os.access(pathdir, os.W_OK):
-            if 'envs' not in pathdir and 'condabin' not in pathdir:
+            if 'envs' not in pathdir and 'conda' not in pathdir:
                 writeable.append(pathdir)
     if not len(writeable):
         desc = 'Could not find any directories in path we can write to.'
