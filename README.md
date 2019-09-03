@@ -32,9 +32,14 @@ and running:
 `source ~/.bash_profile`
 
 After which you can run the following steps:
-
+ - `pip install -U pip` # this ensures you have the most recent version of pip
  - `conda activate base`
  - `pip install --install-option="--install-scripts=[PATH]" git+https://github.com/mhearne-usgs/installcon.git` (where [PATH] is the directory found or created previously.)
+
+
+ `NB: You cannot use "~/bin" in the pip install line above - you must instead specify the full path:
+ /Users/[USERNAME]/bin
+ `
 
  ## Updating
 
@@ -45,6 +50,11 @@ After which you can run the following steps:
  Then run the "pip install" command as above but this time adding the "--upgrade" option to pip:
 
  `pip install --upgrade --install-option="--install-scripts=[PATH]" git+https://github.com/mhearne-usgs/installcon.git`
+
+## Removing
+
+ - `conda activate base`
+ - `pip uninstall installcon` # you will be prompted to confirm deletion
 
  # Usage
 

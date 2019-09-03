@@ -12,6 +12,7 @@ from io import BytesIO
 import platform
 import stat
 import textwrap
+from pathlib import Path
 
 PERMS = (stat.S_IXUSR | stat.S_IRUSR | stat.S_IWUSR |
          stat.S_IXGRP | stat.S_IRGRP |
@@ -136,7 +137,8 @@ def install_package(package, pversion):
     errors = []
     binary_list = []
     for binary in binaries:
-        conda_path = os.environ['CONDA_PREFIX_1']
+        conda_path = os.environ['CONDA_EXE']
+        conda_path = Path(*Path(conda_path).parts[0:-2])
         binpath = os.path.join(conda_path, 'envs', venv, 'bin', binary)
         if not os.path.isfile(binpath):
             errors.append(binpath)
