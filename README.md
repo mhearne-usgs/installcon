@@ -10,18 +10,10 @@ the same goal - namely to install command line programs (in our case from conda 
 
 First you must have a non-conda related directory in your path that is writeable by your user account.
 
-To test this, do:
+If you don't know if you have any writable directories in your path, then run
+this command to create $HOME/bin.
 
-`echo $PATH`
-
-and try:
-
-`touch [pathdir]/testfile.txt;rm [pathdir]/testfile.txt`
-
-for each likely-looking [pathdir] in your path. If there are no writeable directories in your path, 
-you can create one by running this command:
-
-`mkdir ~/bin`;
+`DIR=~/bin;if [ -d $DIR ];then echo "$DIR already exists";else mkdir $DIR;echo "Created ${DIR}";fi`
 
 and adding this line to your .bash_profile:
 
@@ -33,8 +25,10 @@ and running:
 
 After which you can run the following steps:
  - `pip install -U pip` # this ensures you have the most recent version of pip
+ - `conda config --set channel_priority flexible`
+ - `conda config --append channels conda-forge`
  - `conda activate base`
- - `pip install --install-option="--install-scripts=[PATH]" git+https://github.com/mhearne-usgs/installcon.git` (where [PATH] is the directory found or created previously.)
+ - `pip install --install-option="--install-scripts=[DIR]" git+https://github.com/mhearne-usgs/installcon.git` (where [DIR] is the writable directory in your path, see above.)
 
 
  `NB: You cannot use "~/bin" in the pip install line above - you must instead specify the full path:
